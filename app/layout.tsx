@@ -1,0 +1,39 @@
+import type { Metadata } from 'next'
+import { Cormorant_Garamond, Playfair_Display, Inter } from 'next/font/google'
+import './globals.css'
+import { weddingData } from '@/data/wedding-data'
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-playfair',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+export const metadata: Metadata = {
+  title: `${weddingData.groomName} & ${weddingData.brideName} — Wedding`,
+  description: weddingData.invitationText,
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${cormorant.variable} ${playfair.variable} ${inter.variable}`}>
+      <body className="font-sans antialiased" style={{ background: 'var(--color-bg)', color: 'var(--color-text)' }}>
+        {children}
+      </body>
+    </html>
+  )
+}
