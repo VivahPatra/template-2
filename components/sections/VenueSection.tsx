@@ -2,10 +2,11 @@
 import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 
 export default function VenueSection() {
+  const weddingData = useWeddingData()
   return (
     <ParallaxSection
       id="venue"

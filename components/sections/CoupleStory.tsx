@@ -2,12 +2,13 @@
 import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
+import type { StoryMilestone } from '@/types/wedding.types'
 import { fadeUp, slideLeft, slideRight, staggerContainer } from '@/lib/animations'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
 
-function StoryCard({ milestone }: { milestone: (typeof weddingData.coupleStory)[0] }) {
+function StoryCard({ milestone }: { milestone: StoryMilestone }) {
   return (
     <motion.div
       data-cursor-glow
@@ -33,6 +34,7 @@ function StoryCard({ milestone }: { milestone: (typeof weddingData.coupleStory)[
 }
 
 export default function CoupleStory() {
+  const weddingData = useWeddingData()
   return (
     <ParallaxSection
       id="story"

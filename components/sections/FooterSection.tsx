@@ -1,9 +1,10 @@
 'use client'
 import { motion } from 'framer-motion'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
 export default function FooterSection() {
+  const weddingData = useWeddingData()
   return (
     <footer
       className="relative overflow-hidden py-24 text-center"

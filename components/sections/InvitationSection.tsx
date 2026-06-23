@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
@@ -25,6 +25,7 @@ function KasvuCorner({ flip = false }: { flip?: boolean }) {
 }
 
 export default function InvitationSection() {
+  const weddingData = useWeddingData()
   return (
     <ParallaxSection
       bgImage="/assets/invitation-bg.jpg"

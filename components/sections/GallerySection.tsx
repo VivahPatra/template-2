@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
@@ -10,6 +10,7 @@ import EleWalk from '@/components/ui/EleWalk'
 const ROTATIONS = [-2, 1.5, -1, 2, -1.5, 0.5, -2.5, 1]
 
 export default function GallerySection() {
+  const weddingData = useWeddingData()
   return (
     <ParallaxSection
       id="gallery"

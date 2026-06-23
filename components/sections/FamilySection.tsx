@@ -2,10 +2,11 @@
 import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
+import type { FamilyMember } from '@/types/wedding.types'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 
-function FamilyCard({ member }: { member: (typeof weddingData.familyBride)[0] }) {
+function FamilyCard({ member }: { member: FamilyMember }) {
   return (
     <motion.div
       variants={scaleIn}
@@ -33,6 +34,7 @@ function FamilyCard({ member }: { member: (typeof weddingData.familyBride)[0] })
 }
 
 export default function FamilySection() {
+  const weddingData = useWeddingData()
   return (
     <ParallaxSection
       id="family"

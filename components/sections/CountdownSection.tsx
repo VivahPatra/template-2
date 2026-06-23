@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
@@ -19,12 +19,13 @@ function getTimeLeft(target: Date) {
 }
 
 export default function CountdownSection() {
+  const weddingData = useWeddingData()
   const [time, setTime] = useState(getTimeLeft(weddingData.weddingDate))
 
   useEffect(() => {
     const id = setInterval(() => setTime(getTimeLeft(weddingData.weddingDate)), 1000)
     return () => clearInterval(id)
-  }, [])
+  }, [weddingData.weddingDate])
 
   const units = [
     { label: 'Days', value: time.days },
