@@ -29,10 +29,10 @@ export default function RSVPSection() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
-            ✦ &nbsp; Kindly Reply &nbsp; ✦
+            {weddingData.rsvpText || '✦   Kindly Reply   ✦'}
           </motion.p>
           <motion.h2 variants={fadeUp} className="font-display shimmer-text mb-6" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
-            RSVP
+            {weddingData.rsvpHeading || 'RSVP'}
           </motion.h2>
 
           <motion.div
@@ -55,7 +55,7 @@ export default function RSVPSection() {
               We joyfully await your presence.
             </p>
             <p className="font-sans text-sm leading-relaxed mb-8" style={{ color: 'var(--color-muted)' }}>
-              Please let us know by <span style={{ color: 'var(--color-accent)' }}>{weddingData.rsvp.deadline}</span>. Your confirmation helps us ensure the celebrations are as beautiful as the occasion.
+              Please let us know by <span style={{ color: 'var(--color-accent)' }}>{weddingData.rsvpDeadline || weddingData.rsvp.deadline}</span>. Your confirmation helps us ensure the celebrations are as beautiful as the occasion.
             </p>
 
             <GlowDivider className="mb-8" />

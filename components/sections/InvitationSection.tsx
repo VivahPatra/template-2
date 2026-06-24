@@ -47,7 +47,7 @@ export default function InvitationSection() {
             className="font-sans text-xs tracking-[0.4em] uppercase mb-6 glow-pulse"
             style={{ color: 'var(--color-accent)', opacity: 0.7 }}
           >
-            ✦ &nbsp; With Joy &nbsp; ✦
+            {weddingData.invitationSubtitle || '✦   With Joy   ✦'}
           </motion.p>
 
           <motion.h2
@@ -55,7 +55,7 @@ export default function InvitationSection() {
             className="font-display shimmer-text mb-10"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', lineHeight: 1.1 }}
           >
-            You Are Invited
+            {weddingData.invitationHeading || 'You Are Invited'}
           </motion.h2>
 
           {/* Ornate card with Kasavu SVG corners */}
@@ -86,7 +86,7 @@ export default function InvitationSection() {
                 <img src="/assets/ganesha.gif" alt="Ganesha" className="ganesha-glow" style={{ width: 58, height: 'auto', position: 'relative', zIndex: 1 }} />
               </div>
               <p className="font-sans text-xs tracking-[0.3em] uppercase mt-2 glow-pulse" style={{ color: 'var(--color-accent)', opacity: 0.55 }}>
-                ॥ Shree Ganeshaya Namah ॥
+                {weddingData.invitationBlessing || '॥ Shree Ganeshaya Namah ॥'}
               </p>
             </div>
 

@@ -40,8 +40,15 @@ export interface WeddingConfig {
   hashtag: string
   heroImage: string
   heroVideo?: string
+  heroSubtitle?: string
   invitationText: string
+  invitationHeading?: string
+  invitationSubtitle?: string
+  invitationBlessing?: string
   tagline: string
+  rsvpHeading?: string
+  rsvpText?: string
+  rsvpDeadline?: string
   events: WeddingEvent[]
   galleryImages: GalleryImage[]
   familyBride: FamilyMember[]
