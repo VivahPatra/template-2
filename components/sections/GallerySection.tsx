@@ -3,8 +3,6 @@ import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
@@ -13,8 +11,6 @@ const ROTATIONS = [-2, 1.5, -1, 2, -1.5, 0.5, -2.5, 1]
 
 export default function GallerySection() {
   const weddingData = useWeddingData()
-  const { isEditing, editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
   return (
     <ParallaxSection
       id="gallery"
@@ -43,7 +39,7 @@ export default function GallerySection() {
           className="flex flex-wrap justify-center gap-8"
           variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
         >
-          {d.galleryImages.map((img, i) => (
+          {weddingData.galleryImages.map((img, i) => (
             <motion.div
               key={i}
               variants={scaleIn}
@@ -78,7 +74,7 @@ export default function GallerySection() {
           style={{ color: 'var(--color-accent)', opacity: 0.6 }}
           initial={{ opacity: 0 }} whileInView={{ opacity: 0.6 }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.8 }}
         >
-          <EditableText field="hashtag">{d.hashtag}</EditableText>
+          {weddingData.hashtag}
         </motion.p>
       </div>
     </ParallaxSection>

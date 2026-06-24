@@ -3,13 +3,10 @@ import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import type { FamilyMember } from '@/types/wedding.types'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 
-function FamilyCard({ member, index, side }: { member: FamilyMember; index: number; side: 'bride' | 'groom' }) {
-  const arrayField = side === 'bride' ? 'familyBride' : 'familyGroom'
+function FamilyCard({ member }: { member: FamilyMember }) {
   return (
     <motion.div
       variants={scaleIn}
@@ -30,16 +27,14 @@ function FamilyCard({ member, index, side }: { member: FamilyMember; index: numb
           style={{ background: 'rgba(192,66,92,0.2)' }}
         />
       </div>
-      <EditableText field="name" index={index} arrayField={arrayField} tag="p" className="font-display text-base" style={{ color: 'var(--color-text)' }}>{member.name}</EditableText>
-      <EditableText field="relation" index={index} arrayField={arrayField} tag="p" className="font-sans text-xs tracking-wider uppercase mt-0.5" style={{ color: 'var(--color-accent)', opacity: 0.65 }}>{member.relation}</EditableText>
+      <p className="font-display text-base" style={{ color: 'var(--color-text)' }}>{member.name}</p>
+      <p className="font-sans text-xs tracking-wider uppercase mt-0.5" style={{ color: 'var(--color-accent)', opacity: 0.65 }}>{member.relation}</p>
     </motion.div>
   )
 }
 
 export default function FamilySection() {
   const weddingData = useWeddingData()
-  const { isEditing, editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
   return (
     <ParallaxSection
       id="family"
@@ -77,11 +72,11 @@ export default function FamilySection() {
               className="font-display text-2xl text-center mb-8 glow-text"
               style={{ color: 'var(--color-accent)' }}
             >
-              <EditableText field="brideName">{d.brideName}</EditableText>&apos;s Family
+              {weddingData.brideName}&apos;s Family
             </motion.h3>
             <div className="grid grid-cols-2 gap-6">
-              {d.familyBride.map((m, i) => (
-                <FamilyCard key={i} member={m} index={i} side="bride" />
+              {weddingData.familyBride.map((m, i) => (
+                <FamilyCard key={i} member={m} />
               ))}
             </div>
           </motion.div>
@@ -101,11 +96,11 @@ export default function FamilySection() {
               className="font-display text-2xl text-center mb-8 glow-text"
               style={{ color: 'var(--color-accent)' }}
             >
-              <EditableText field="groomName">{d.groomName}</EditableText>&apos;s Family
+              {weddingData.groomName}&apos;s Family
             </motion.h3>
             <div className="grid grid-cols-2 gap-6">
-              {d.familyGroom.map((m, i) => (
-                <FamilyCard key={i} member={m} index={i} side="groom" />
+              {weddingData.familyGroom.map((m, i) => (
+                <FamilyCard key={i} member={m} />
               ))}
             </div>
           </motion.div>

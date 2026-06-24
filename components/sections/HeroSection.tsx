@@ -2,14 +2,10 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
 export default function HeroSection() {
   const weddingData = useWeddingData()
-  const { isEditing, editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
 
@@ -105,18 +101,18 @@ export default function HeroSection() {
         </motion.p>
 
         <motion.div variants={fadeUp} className="mb-6">
-          <EditableText field="groomName" tag="h1" className="font-display leading-none shimmer-text" style={{ fontSize: 'clamp(2.5rem, 10vw, 7rem)' }}>
-            {d.groomName}
-          </EditableText>
+          <h1 className="font-display leading-none shimmer-text" style={{ fontSize: 'clamp(2.5rem, 10vw, 7rem)' }}>
+            {weddingData.groomName}
+          </h1>
           <span
             className="block my-2 glow-text-strong float-slow font-display"
             style={{ color: 'var(--color-accent2)', fontSize: 'clamp(1.2rem, 3vw, 2rem)' }}
           >
             &amp;
           </span>
-          <EditableText field="brideName" tag="h1" className="font-display leading-none shimmer-text" style={{ fontSize: 'clamp(2.5rem, 10vw, 7rem)' }}>
-            {d.brideName}
-          </EditableText>
+          <h1 className="font-display leading-none shimmer-text" style={{ fontSize: 'clamp(2.5rem, 10vw, 7rem)' }}>
+            {weddingData.brideName}
+          </h1>
         </motion.div>
 
         <motion.div variants={fadeUp} className="flex items-center justify-center gap-4 mb-10">
@@ -132,7 +128,7 @@ export default function HeroSection() {
           className="font-sans text-base opacity-60 tracking-widest"
           style={{ color: 'var(--color-text)' }}
         >
-          <EditableText field="tagline">{d.tagline}</EditableText>
+          {weddingData.tagline}
         </motion.p>
 
         <motion.div

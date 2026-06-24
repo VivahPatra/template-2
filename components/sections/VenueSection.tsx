@@ -3,14 +3,10 @@ import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 
 export default function VenueSection() {
   const weddingData = useWeddingData()
-  const { isEditing, editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
   return (
     <ParallaxSection
       id="venue"
@@ -54,12 +50,12 @@ export default function VenueSection() {
             >
               🏛️
             </motion.div>
-            <EditableText field="venue.name" tag="h3" className="font-display text-3xl glow-text mb-2" style={{ color: 'var(--color-accent)' }}>
-              {d.venue.name}
-            </EditableText>
-            <EditableText field="venue.address" tag="p" className="font-sans text-sm" style={{ color: 'var(--color-muted)' }}>
-              {d.venue.address}
-            </EditableText>
+            <h3 className="font-display text-3xl glow-text mb-2" style={{ color: 'var(--color-accent)' }}>
+              {weddingData.venue.name}
+            </h3>
+            <p className="font-sans text-sm" style={{ color: 'var(--color-muted)' }}>
+              {weddingData.venue.address}
+            </p>
           </div>
 
           {/* Event quick list */}
@@ -68,8 +64,8 @@ export default function VenueSection() {
               Events at this Venue
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              {d.events
-                .filter((e) => e.venue === d.venue.name)
+              {weddingData.events
+                .filter((e) => e.venue === weddingData.venue.name)
                 .map((event) => (
                   <a
                     key={event.id}
@@ -93,7 +89,7 @@ export default function VenueSection() {
             {/* Get Directions */}
             <div className="text-center">
               <motion.a
-                href={d.venue.mapUrl}
+                href={weddingData.venue.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-3 rounded-full font-sans text-sm font-semibold tracking-wider uppercase"
@@ -115,8 +111,8 @@ export default function VenueSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {d.events
-            .filter((e) => e.venue !== d.venue.name)
+          {weddingData.events
+            .filter((e) => e.venue !== weddingData.venue.name)
             .map((event) => (
               <motion.a
                 key={event.id}

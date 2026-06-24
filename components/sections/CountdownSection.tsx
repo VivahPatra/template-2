@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
@@ -21,14 +20,12 @@ function getTimeLeft(target: Date) {
 
 export default function CountdownSection() {
   const weddingData = useWeddingData()
-  const { isEditing, editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
-  const [time, setTime] = useState(getTimeLeft(d.weddingDate))
+  const [time, setTime] = useState(getTimeLeft(weddingData.weddingDate))
 
   useEffect(() => {
-    const id = setInterval(() => setTime(getTimeLeft(d.weddingDate)), 1000)
+    const id = setInterval(() => setTime(getTimeLeft(weddingData.weddingDate)), 1000)
     return () => clearInterval(id)
-  }, [d.weddingDate])
+  }, [weddingData.weddingDate])
 
   const units = [
     { label: 'Days', value: time.days },

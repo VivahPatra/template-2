@@ -2,8 +2,6 @@
 import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import type { WeddingEvent } from '@/types/wedding.types'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import SwingDecor from '@/components/ui/SwingDecor'
@@ -11,12 +9,10 @@ import EleWalk from '@/components/ui/EleWalk'
 
 function EventNode({
   event,
-  index,
   isHero = false,
   delay = 0,
 }: {
   event: WeddingEvent
-  index: number
   isHero?: boolean
   delay?: number
 }) {
@@ -86,14 +82,17 @@ function EventNode({
 
       {/* Name + date */}
       <div className="text-center mt-3">
-        <EditableText field="name" index={index} arrayField="events" tag="p" className="font-display tracking-wide glow-text" style={{ color: 'var(--color-text)', fontSize: isHero ? '1.25rem' : '1rem' }}>
+        <p
+          className="font-display tracking-wide glow-text"
+          style={{ color: 'var(--color-text)', fontSize: isHero ? '1.25rem' : '1rem' }}
+        >
           {event.name}
-        </EditableText>
+        </p>
         <p
           className="font-sans text-xs tracking-widest mt-0.5"
           style={{ color, opacity: 0.7 }}
         >
-          <EditableText field="date" index={index} arrayField="events">{event.date.split(',')[0]}</EditableText> · <EditableText field="time" index={index} arrayField="events">{event.time}</EditableText>
+          {event.date.split(',')[0]} · {event.time}
         </p>
       </div>
 
@@ -107,12 +106,12 @@ function EventNode({
           boxShadow: `0 0 12px ${color}18`,
         }}
       >
-        <EditableText field="venue" index={index} arrayField="events" tag="p" className="font-serif text-sm" style={{ color: 'var(--color-text)', opacity: 0.85 }}>
+        <p className="font-serif text-sm" style={{ color: 'var(--color-text)', opacity: 0.85 }}>
           {event.venue}
-        </EditableText>
-        <EditableText field="venueAddress" index={index} arrayField="events" tag="p" className="font-sans text-xs mt-1" style={{ color: 'var(--color-muted)', opacity: 0.7 }}>
+        </p>
+        <p className="font-sans text-xs mt-1" style={{ color: 'var(--color-muted)', opacity: 0.7 }}>
           {event.venueAddress.split(',')[0]}
-        </EditableText>
+        </p>
         <a
           href={mapUrl}
           target="_blank"
@@ -129,9 +128,7 @@ function EventNode({
 
 export default function EventsSection() {
   const weddingData = useWeddingData()
-  const { isEditing, editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
-  const events = d.events
+  const events = weddingData.events
   const half = Math.ceil(events.length / 2)
   const row1 = events.slice(0, half)
   const row2 = events.slice(half)
@@ -200,7 +197,7 @@ export default function EventsSection() {
           {/* Row 1 */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10 md:relative md:z-10">
             {row1.map((ev, i) => (
-              <EventNode key={ev.id} event={ev} index={i} delay={i * 0.1} />
+              <EventNode key={ev.id} event={ev} delay={i * 0.1} />
             ))}
           </div>
 
@@ -210,7 +207,6 @@ export default function EventsSection() {
               <EventNode
                 key={ev.id}
                 event={ev}
-                index={half + i}
                 isHero={ev.id === 'wedding'}
                 delay={0.15 + i * 0.1}
               />
