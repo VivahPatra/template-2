@@ -1,10 +1,14 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
+import { useEditMode } from '@/context/EditModeContext'
+import EditableText from '@/components/ui/EditableText'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
 export default function FooterSection() {
   const weddingData = useWeddingData()
+  const { isEditing, editData } = useEditMode()
+  const d = isEditing ? editData : weddingData
   return (
     <footer
       className="relative overflow-hidden py-24 text-center"
@@ -46,9 +50,9 @@ export default function FooterSection() {
             className="font-display shimmer-text mb-4"
             style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', lineHeight: 1.1 }}
           >
-            {weddingData.groomName}
+            <EditableText field="groomName">{d.groomName}</EditableText>
             <span className="mx-3 float-slow" style={{ color: 'var(--color-accent2)', fontSize: '0.65em' }}>&amp;</span>
-            {weddingData.brideName}
+            <EditableText field="brideName">{d.brideName}</EditableText>
           </motion.h2>
 
           <motion.p
@@ -56,7 +60,7 @@ export default function FooterSection() {
             className="font-sans text-sm tracking-[0.3em] uppercase mb-2"
             style={{ color: 'var(--color-accent)', opacity: 0.7 }}
           >
-            {weddingData.tagline}
+            <EditableText field="tagline">{d.tagline}</EditableText>
           </motion.p>
 
           <motion.p
@@ -80,14 +84,14 @@ export default function FooterSection() {
             className="font-display text-xl glow-text mb-6"
             style={{ color: 'var(--color-accent)' }}
           >
-            {weddingData.hashtag}
+            <EditableText field="hashtag">{d.hashtag}</EditableText>
           </motion.p>
 
           {/* Social */}
-          {weddingData.socialLinks?.instagram && (
+          {d.socialLinks?.instagram && (
             <motion.div variants={fadeUp} className="flex justify-center mb-10">
               <motion.a
-                href={weddingData.socialLinks.instagram}
+                href={d.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-2 rounded-full font-sans text-sm"

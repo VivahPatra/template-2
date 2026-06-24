@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
 import { useWeddingData } from '@/context/WeddingDataContext'
+import { useEditMode } from '@/context/EditModeContext'
+import EditableText from '@/components/ui/EditableText'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
@@ -26,6 +28,8 @@ function KasvuCorner({ flip = false }: { flip?: boolean }) {
 
 export default function InvitationSection() {
   const weddingData = useWeddingData()
+  const { isEditing, editData } = useEditMode()
+  const d = isEditing ? editData : weddingData
   return (
     <ParallaxSection
       bgImage="/assets/invitation-bg.jpg"
@@ -93,12 +97,12 @@ export default function InvitationSection() {
             {/* Couple names */}
             <div className="flex items-center justify-center gap-3 my-5">
               <div className="text-center">
-                <span className="font-display shimmer-text block" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
-                  {weddingData.groomName}
-                </span>
-                {weddingData.groomParents && (
+                <EditableText field="groomName" className="font-display shimmer-text block" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
+                  {d.groomName}
+                </EditableText>
+                {d.groomParents && (
                   <p className="font-sans text-xs tracking-wide mt-1" style={{ color: 'var(--color-muted)', opacity: 0.7 }}>
-                    Son of {weddingData.groomParents}
+                    Son of <EditableText field="groomParents">{d.groomParents}</EditableText>
                   </p>
                 )}
               </div>
@@ -106,12 +110,12 @@ export default function InvitationSection() {
                 &amp;
               </span>
               <div className="text-center">
-                <span className="font-display shimmer-text block" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
-                  {weddingData.brideName}
-                </span>
-                {weddingData.brideParents && (
+                <EditableText field="brideName" className="font-display shimmer-text block" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
+                  {d.brideName}
+                </EditableText>
+                {d.brideParents && (
                   <p className="font-sans text-xs tracking-wide mt-1" style={{ color: 'var(--color-muted)', opacity: 0.7 }}>
-                    Daughter of {weddingData.brideParents}
+                    Daughter of <EditableText field="brideParents">{d.brideParents}</EditableText>
                   </p>
                 )}
               </div>
@@ -124,19 +128,16 @@ export default function InvitationSection() {
               <line x1="152" y1="5" x2="300" y2="5" stroke="var(--color-accent)" strokeWidth="0.6" opacity="0.35"/>
             </svg>
 
-            <p
-              className="font-display text-lg md:text-xl leading-relaxed mb-6"
-              style={{ color: 'var(--color-text)', opacity: 0.85 }}
-            >
-              {weddingData.invitationText}
-            </p>
+            <EditableText field="invitationText" tag="p" multiline className="font-display text-lg md:text-xl leading-relaxed mb-6" style={{ color: 'var(--color-text)', opacity: 0.85 }}>
+              {d.invitationText}
+            </EditableText>
 
             <GlowDivider className="my-6" />
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5 font-sans text-sm tracking-wide" style={{ color: 'var(--color-accent)', opacity: 0.75 }}>
               <span>📅 &nbsp; November 15, 2026</span>
               <span className="hidden sm:block opacity-30">◆</span>
-              <span>✉️ &nbsp; {weddingData.hashtag}</span>
+              <span>✉️ &nbsp; <EditableText field="hashtag">{d.hashtag}</EditableText></span>
             </div>
           </motion.div>
         </motion.div>

@@ -3,13 +3,17 @@ import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
 import { useWeddingData } from '@/context/WeddingDataContext'
+import { useEditMode } from '@/context/EditModeContext'
+import EditableText from '@/components/ui/EditableText'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
 
 export default function RSVPSection() {
   const weddingData = useWeddingData()
-  const whatsapp = `https://wa.me/${weddingData.rsvp.whatsappNumber}?text=${encodeURIComponent(weddingData.rsvp.message)}`
+  const { isEditing, editData } = useEditMode()
+  const d = isEditing ? editData : weddingData
+  const whatsapp = `https://wa.me/${d.rsvp.whatsappNumber}?text=${encodeURIComponent(d.rsvp.message)}`
 
   return (
     <ParallaxSection
@@ -55,7 +59,7 @@ export default function RSVPSection() {
               We joyfully await your presence.
             </p>
             <p className="font-sans text-sm leading-relaxed mb-8" style={{ color: 'var(--color-muted)' }}>
-              Please let us know by <span style={{ color: 'var(--color-accent)' }}>{weddingData.rsvp.deadline}</span>. Your confirmation helps us ensure the celebrations are as beautiful as the occasion.
+              Please let us know by <EditableText field="rsvp.deadline" style={{ color: 'var(--color-accent)' }}>{d.rsvp.deadline}</EditableText>. Your confirmation helps us ensure the celebrations are as beautiful as the occasion.
             </p>
 
             <GlowDivider className="mb-8" />
@@ -85,11 +89,11 @@ export default function RSVPSection() {
           >
             Or call us at{' '}
             <a
-              href={`tel:+${weddingData.rsvp.whatsappNumber}`}
+              href={`tel:+${d.rsvp.whatsappNumber}`}
               className="glow-text font-semibold"
               style={{ color: 'var(--color-accent)' }}
             >
-              +{weddingData.rsvp.whatsappNumber}
+              +<EditableText field="rsvp.whatsappNumber">{d.rsvp.whatsappNumber}</EditableText>
             </a>
           </motion.p>
         </motion.div>

@@ -3,12 +3,14 @@ import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
 import { useWeddingData } from '@/context/WeddingDataContext'
+import { useEditMode } from '@/context/EditModeContext'
+import EditableText from '@/components/ui/EditableText'
 import type { StoryMilestone } from '@/types/wedding.types'
 import { fadeUp, slideLeft, slideRight, staggerContainer } from '@/lib/animations'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
 
-function StoryCard({ milestone }: { milestone: StoryMilestone }) {
+function StoryCard({ milestone, index }: { milestone: StoryMilestone; index: number }) {
   return (
     <motion.div
       data-cursor-glow
@@ -23,18 +25,20 @@ function StoryCard({ milestone }: { milestone: StoryMilestone }) {
           <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 50%, var(--color-surface) 100%)' }} />
         </div>
       )}
-      <h3 className="font-display text-xl mb-2 glow-text" style={{ color: 'var(--color-accent)' }}>
+      <EditableText field="title" index={index} arrayField="coupleStory" tag="h3" className="font-display text-xl mb-2 glow-text" style={{ color: 'var(--color-accent)' }}>
         {milestone.title}
-      </h3>
-      <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+      </EditableText>
+      <EditableText field="description" index={index} arrayField="coupleStory" tag="p" multiline className="font-sans text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
         {milestone.description}
-      </p>
+      </EditableText>
     </motion.div>
   )
 }
 
 export default function CoupleStory() {
   const weddingData = useWeddingData()
+  const { isEditing, editData } = useEditMode()
+  const d = isEditing ? editData : weddingData
   return (
     <ParallaxSection
       id="story"
@@ -71,7 +75,7 @@ export default function CoupleStory() {
           />
 
           <div className="space-y-12 md:space-y-16">
-            {weddingData.coupleStory.map((milestone, i) => {
+            {d.coupleStory.map((milestone, i) => {
               const isLeft = i % 2 === 0
               return (
                 <motion.div
@@ -84,7 +88,7 @@ export default function CoupleStory() {
                   {/* Desktop: alternating layout */}
                   <div className="hidden md:grid md:grid-cols-[1fr_80px_1fr] items-center gap-4">
                     <div className={isLeft ? '' : 'col-start-3'}>
-                      <StoryCard milestone={milestone} />
+                      <StoryCard milestone={milestone} index={i} />
                     </div>
 
                     {/* Center dot — always col 2 */}
@@ -98,9 +102,9 @@ export default function CoupleStory() {
                       >
                         {milestone.icon}
                       </motion.div>
-                      <span className="font-sans text-xs tracking-widest uppercase text-center" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>
+                      <EditableText field="date" index={i} arrayField="coupleStory" className="font-sans text-xs tracking-widest uppercase text-center" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>
                         {milestone.date}
-                      </span>
+                      </EditableText>
                     </div>
                   </div>
 
@@ -113,12 +117,12 @@ export default function CoupleStory() {
                       >
                         {milestone.icon}
                       </div>
-                      <span className="font-sans text-xs tracking-widest uppercase" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>
+                      <EditableText field="date" index={i} arrayField="coupleStory" className="font-sans text-xs tracking-widest uppercase" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>
                         {milestone.date}
-                      </span>
+                      </EditableText>
                     </div>
                     <div className="w-full">
-                      <StoryCard milestone={milestone} />
+                      <StoryCard milestone={milestone} index={i} />
                     </div>
                   </div>
                 </motion.div>
