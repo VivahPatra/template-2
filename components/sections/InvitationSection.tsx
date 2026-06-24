@@ -4,6 +4,7 @@ import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, staggerContainer } from '@/lib/animations'
+import { formatDate } from '@/lib/utils'
 import SwingDecor from '@/components/ui/SwingDecor'
 import EleWalk from '@/components/ui/EleWalk'
 
@@ -134,7 +135,7 @@ export default function InvitationSection() {
             <GlowDivider className="my-6" />
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5 font-sans text-sm tracking-wide" style={{ color: 'var(--color-accent)', opacity: 0.75 }}>
-              <span>📅 &nbsp; November 15, 2026</span>
+              <span>📅 &nbsp; {formatDate(weddingData.weddingDate)}</span>
               <span className="hidden sm:block opacity-30">◆</span>
               <span>✉️ &nbsp; {weddingData.hashtag}</span>
             </div>
