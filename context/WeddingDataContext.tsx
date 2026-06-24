@@ -55,6 +55,7 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
     }
 
     window.addEventListener('message', handleMessage)
+// Signal parent that we're ready to receive data    if (window.parent !== window) {      window.parent.postMessage({ type: 'VIVAHPATRA_READY' }, '*')    }
     return () => window.removeEventListener('message', handleMessage)
   }, [])
 
