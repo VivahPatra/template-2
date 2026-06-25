@@ -18,7 +18,8 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
       if (event.data?.type !== 'VIVAHPATRA_UPDATE') return
       const d = event.data.payload ?? event.data
 
-      setData((prev) => ({
+      setData((prev) => {
+      const merged: WeddingConfig = {
         brideName: d.brideName ?? prev.brideName,
         groomName: d.groomName ?? prev.groomName,
         groomParents: d.groomParents ?? prev.groomParents,
@@ -58,7 +59,14 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
         socialLinks: d.instagram
           ? { instagram: d.instagram }
           : d.socialLinks ?? prev.socialLinks,
-      }))
+      }
+
+      if (d.sections) {
+        merged.sections = d.sections as Record<string, boolean>
+      }
+
+      return merged
+      })
     }
 
     window.addEventListener('message', handleMessage)

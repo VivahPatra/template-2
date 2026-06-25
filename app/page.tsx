@@ -15,6 +15,7 @@ import GallerySection from '@/components/sections/GallerySection'
 import RSVPSection from '@/components/sections/RSVPSection'
 import CountdownSection from '@/components/sections/CountdownSection'
 import FooterSection from '@/components/sections/FooterSection'
+import SectionGate from '@/components/ui/SectionGate'
 
 export default function Page() {
   const [loaded, setLoaded] = useState(false)
@@ -31,28 +32,44 @@ export default function Page() {
           <FloatingFABs />
           <div className="relative overflow-x-hidden">
             <main>
-              <HeroSection />
-              <WaveDivider fromColor="var(--color-bg)" toColor="var(--color-surface)" />
+              <SectionGate name="hero">
+                <HeroSection />
+                <WaveDivider fromColor="var(--color-bg)" toColor="var(--color-surface)" />
+              </SectionGate>
 
-              <InvitationSection />
-              <WaveDivider fromColor="var(--color-surface)" toColor="var(--color-surface2)" />
+              <SectionGate name="invitation">
+                <InvitationSection />
+                <WaveDivider fromColor="var(--color-surface)" toColor="var(--color-surface2)" />
+              </SectionGate>
 
-              <CoupleStory />
-              <WaveDivider fromColor="var(--color-surface2)" toColor="var(--color-bg)" />
+              <SectionGate name="coupleStory">
+                <CoupleStory />
+                <WaveDivider fromColor="var(--color-surface2)" toColor="var(--color-bg)" />
+              </SectionGate>
 
-              <GallerySection />
-              <WaveDivider fromColor="var(--color-surface)" toColor="var(--color-surface2)" />
+              <SectionGate name="gallery">
+                <GallerySection />
+                <WaveDivider fromColor="var(--color-surface)" toColor="var(--color-surface2)" />
+              </SectionGate>
 
-              <EventsSection />
-              <WaveDivider fromColor="var(--color-surface2)" toColor="var(--color-surface)" />
+              <SectionGate name="events">
+                <EventsSection />
+                <WaveDivider fromColor="var(--color-surface2)" toColor="var(--color-surface)" />
+              </SectionGate>
 
-              <RSVPSection />
-              <WaveDivider fromColor="var(--color-surface)" toColor="var(--color-surface2)" />
+              <SectionGate name="rsvp">
+                <RSVPSection />
+                <WaveDivider fromColor="var(--color-surface)" toColor="var(--color-surface2)" />
+              </SectionGate>
 
-              <CountdownSection />
-              <WaveDivider fromColor="var(--color-surface2)" toColor="var(--color-surface2)" />
+              <SectionGate name="countdown">
+                <CountdownSection />
+                <WaveDivider fromColor="var(--color-surface2)" toColor="var(--color-surface2)" />
+              </SectionGate>
 
-              <FooterSection />
+              <SectionGate name="footer">
+                <FooterSection />
+              </SectionGate>
             </main>
           </div>
         </>

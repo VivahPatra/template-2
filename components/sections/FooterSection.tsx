@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
+import { formatDate } from '@/lib/utils'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
@@ -64,7 +65,7 @@ export default function FooterSection() {
             className="font-sans text-xs tracking-wider mt-2 mb-8"
             style={{ color: 'var(--color-muted)' }}
           >
-            November 15, 2026 · Mumbai
+            {formatDate(weddingData.weddingDate)} · Mumbai
           </motion.p>
 
           {/* Divider */}
