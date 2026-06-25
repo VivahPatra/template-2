@@ -82,10 +82,10 @@ export const weddingData: WeddingConfig = {
   ],
 
   galleryImages: [
-    { src: '/assets/gallery/g1.jpg', alt: 'Couple photo 1', span: 'wide' },
-    { src: '/assets/gallery/g2.jpg', alt: 'Couple photo 2', span: 'normal' },
-    { src: '/assets/gallery/g3.jpg', alt: 'Couple photo 3', span: 'tall' },
-    { src: '/assets/gallery/g4.jpg', alt: 'Couple photo 4', span: 'normal' },
+    { src: '/assets/gallery/gallery-1.jpg', alt: 'Couple photo 1', span: 'wide' },
+    { src: '/assets/gallery/gallery-2.jpg', alt: 'Couple photo 2', span: 'normal' },
+    { src: '/assets/gallery/gallery-3.jpg', alt: 'Couple photo 3', span: 'tall' },
+    { src: '/assets/gallery/gallery-4.jpg', alt: 'Couple photo 4', span: 'normal' },
   ],
 
   coupleStory: [
@@ -94,28 +94,28 @@ export const weddingData: WeddingConfig = {
       title: 'When We First Met',
       description: 'A chance encounter at a college fest turned into hours of conversation. Neither of us wanted the evening to end.',
       icon: '☕',
-      image: '/assets/story/s1.jpg',
+      image: '/assets/story/story-1.jpg',
     },
     {
       date: 'June 2021',
       title: 'Our First Date',
       description: 'A monsoon evening walk by the sea that turned magical. We both knew, though neither said it yet.',
       icon: '🌧️',
-      image: '/assets/story/s2.jpg',
+      image: '/assets/story/story-2.jpg',
     },
     {
       date: 'December 2022',
       title: 'The Proposal',
       description: 'Under a sky full of stars at our favourite rooftop restaurant, Aryan got down on one knee. She said yes before he finished the sentence.',
       icon: '💍',
-      image: '/assets/story/s3.jpg',
+      image: '/assets/story/story-3.jpg',
     },
     {
       date: 'November 2026',
       title: 'Forever Begins',
       description: 'And now we begin forever. We cannot wait to celebrate with every person who has been part of our journey.',
       icon: '🌹',
-      image: '/assets/story/s4.jpg',
+      image: '/assets/story/story-4.jpg',
     },
   ],
 
