@@ -101,7 +101,7 @@ function EventNode({
         className="text-center mt-3 rounded-xl px-3 py-3"
         style={{
           maxWidth: 160,
-          background: 'var(--color-surface)',
+          background: '#0a0a0a',
           border: `1px solid ${color}33`,
           boxShadow: `0 0 12px ${color}18`,
         }}
@@ -117,7 +117,7 @@ function EventNode({
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 mt-3 px-4 py-2 rounded-full font-sans text-xs font-semibold whitespace-nowrap tracking-wider transition-all hover:opacity-90"
-          style={{ background: 'var(--color-surface)', color: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}
+          style={{ background: '#0a0a0a', color: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}
         >
           📍 Get Directions
         </a>
