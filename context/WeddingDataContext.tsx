@@ -16,7 +16,7 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
       if (event.data?.type !== 'VIVAHPATRA_UPDATE') return
-      const d = event.data.payload ?? event.data
+      const d = event.data.data ?? event.data.payload ?? {}
 
       setData((prev) => {
       const merged: WeddingConfig = {
