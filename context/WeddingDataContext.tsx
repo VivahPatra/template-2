@@ -65,6 +65,11 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
         merged.sections = d.sections as Record<string, boolean>
       }
 
+      // Name order swap
+      if (d.groomFirst === false) {
+        const tmpN = merged.groomName; merged.groomName = merged.brideName; merged.brideName = tmpN
+        const tmpP = merged.groomParents; merged.groomParents = merged.brideParents; merged.brideParents = tmpP
+      }
       return merged
       })
     }
