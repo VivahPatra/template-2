@@ -67,6 +67,7 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
 
       // Name order swap
       if (d.groomFirst === false) {
+      merged.groomFirst = false
         const tmpN = merged.groomName; merged.groomName = merged.brideName; merged.brideName = tmpN
         const tmpP = merged.groomParents; merged.groomParents = merged.brideParents; merged.brideParents = tmpP
       }

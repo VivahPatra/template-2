@@ -67,5 +67,6 @@ export interface WeddingConfig {
   socialLinks: {
     instagram?: string
   }
+  groomFirst?: boolean
   sections?: Record<string, boolean>
 }
