@@ -89,7 +89,7 @@ export default function RSVPSection() {
               className="glow-text font-semibold"
               style={{ color: 'var(--color-accent)' }}
             >
-              +{weddingData.rsvp.whatsappNumber}
+              {weddingData.rsvp.whatsappNumber}
             </a>
           </motion.p>
         </motion.div>
