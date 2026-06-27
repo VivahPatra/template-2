@@ -2,6 +2,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
+import { formatDate } from '@/lib/utils'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
 export default function HeroSection() {
@@ -118,7 +119,7 @@ export default function HeroSection() {
         <motion.div variants={fadeUp} className="flex items-center justify-center gap-4 mb-10">
           <div className="h-px w-20" style={{ background: 'linear-gradient(to right, transparent, var(--color-accent))' }} />
           <span className="font-sans text-sm tracking-[0.25em] uppercase" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
-            15 November 2026
+            {formatDate(weddingData.weddingDate)}
           </span>
           <div className="h-px w-20" style={{ background: 'linear-gradient(to left, transparent, var(--color-accent))' }} />
         </motion.div>
