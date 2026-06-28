@@ -4,6 +4,7 @@ import ParallaxSection from '@/components/ui/ParallaxSection'
 import GlowDivider from '@/components/ui/GlowDivider'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
+import { formatDate } from '@/lib/utils'
 
 export default function VenueSection() {
   const weddingData = useWeddingData()
@@ -53,8 +54,11 @@ export default function VenueSection() {
             <h3 className="font-display text-3xl glow-text mb-2" style={{ color: 'var(--color-accent)' }}>
               {weddingData.venue.name}
             </h3>
-            <p className="font-sans text-sm" style={{ color: 'var(--color-muted)' }}>
+            <p className="font-sans text-sm mb-2" style={{ color: 'var(--color-muted)' }}>
               {weddingData.venue.address}
+            </p>
+            <p className="font-sans text-xs tracking-[0.3em] uppercase mb-8" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+              {formatDate(weddingData.weddingDate)} · {weddingData.weddingDate.toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit', hour12: true })}
             </p>
           </div>
 
