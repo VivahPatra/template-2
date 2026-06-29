@@ -64,7 +64,7 @@ export default function ParallaxSection({
           }}
         />
       </div>
-      <img src="/assets/flower.png" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      <img src="/assets/flower.webp" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         style={{ opacity: 0.5, mixBlendMode: 'overlay', zIndex: 5 }} />
       <div className="relative z-10">{children}</div>
     </section>

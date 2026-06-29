@@ -21,7 +21,7 @@ export const weddingData: WeddingConfig = {
       time: '6:00 PM',
       venue: 'The Grand Ballroom, The Leela',
       venueAddress: 'Sahar Airport Road, Mumbai',
-      image: '/assets/events/engagement.png',
+      image: '/assets/events/engagement.webp',
       color: '#c9a84c',
     },
     {
@@ -32,7 +32,7 @@ export const weddingData: WeddingConfig = {
       time: '4:00 PM onwards',
       venue: 'The Garden Palace',
       venueAddress: '12 Rose Garden Road, Mumbai',
-      image: '/assets/events/mehendi.png',
+      image: '/assets/events/mehendi.webp',
       color: '#4a7c59',
     },
     {
@@ -43,7 +43,7 @@ export const weddingData: WeddingConfig = {
       time: '10:00 AM onwards',
       venue: 'Home Ceremony',
       venueAddress: '45 Sunset Avenue, Mumbai',
-      image: '/assets/events/haldi.png',
+      image: '/assets/events/haldi.webp',
       color: '#c9a84c',
     },
     {
@@ -54,7 +54,7 @@ export const weddingData: WeddingConfig = {
       time: '7:00 PM onwards',
       venue: 'Grand Ballroom, The Leela',
       venueAddress: 'Sahar Airport Road, Mumbai',
-      image: '/assets/events/sangeet.png',
+      image: '/assets/events/sangeet.webp',
       color: '#c0425c',
     },
     {
@@ -65,7 +65,7 @@ export const weddingData: WeddingConfig = {
       time: '10:00 AM',
       venue: 'Shri Ganesh Mandir Banquet',
       venueAddress: 'Temple Road, Andheri, Mumbai',
-      image: '/assets/events/wedding.png',
+      image: '/assets/events/wedding.webp',
       color: '#e8a0b4',
     },
     {
@@ -76,7 +76,7 @@ export const weddingData: WeddingConfig = {
       time: '7:00 PM',
       venue: 'Grand Ballroom, The Leela',
       venueAddress: 'Sahar Airport Road, Mumbai',
-      image: '/assets/events/reception.png',
+      image: '/assets/events/reception.webp',
       color: '#9b6b9b',
     },
   ],

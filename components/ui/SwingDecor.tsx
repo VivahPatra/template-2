@@ -23,7 +23,7 @@ export default function SwingDecor({ side = 'left', size = 140 }: Props) {
         animation: 'swingPendulum 4s ease-in-out infinite',
       }}>
         <img
-          src="/assets/swing.png"
+          src="/assets/swing.webp"
           alt=""
           style={{
             width: size,

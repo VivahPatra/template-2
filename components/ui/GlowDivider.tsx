@@ -13,7 +13,7 @@ export default function GlowDivider({ className }: { className?: string }) {
         <rect x="233" y="3" width="6" height="6" fill="var(--color-accent2)" opacity="0.55" transform="rotate(45 236 6)"/>
       </svg>
       {/* Fountain centre accent */}
-      <img src="/assets/fountain.png" alt="" className="fountain-glow float-slow" style={{ width: 40, height: 'auto' }} />
+      <img src="/assets/fountain.webp" alt="" className="fountain-glow float-slow" style={{ width: 40, height: 'auto' }} />
       <svg viewBox="0 0 320 16" width="100%" style={{ maxWidth: 320 }} aria-hidden="true">
         <line x1="0" y1="6" x2="320" y2="6" stroke="var(--color-accent)" strokeWidth="1.2" opacity="0.35"/>
         <line x1="0" y1="10" x2="320" y2="10" stroke="var(--color-accent)" strokeWidth="0.5" opacity="0.18"/>

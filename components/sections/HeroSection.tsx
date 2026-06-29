@@ -23,7 +23,7 @@ export default function HeroSection() {
       {/* Parallax background — palace at bottom, contain to avoid crop */}
       <div className="absolute inset-0">
         <motion.img
-          src="/assets/palace.png"
+          src="/assets/palace.webp"
           alt=""
           style={{
             position: 'absolute',
@@ -47,12 +47,12 @@ export default function HeroSection() {
 
       {/* Drifting clouds — one direction + scroll parallax */}
       <motion.div className="absolute pointer-events-none" style={{ top: 0, bottom: 0, left: '-20%', right: '-20%', y: cloudY, x: cloudX }} aria-hidden>
-        <img src="/assets/clds.png" alt="" style={{ position: 'absolute', top: '2%', left: '-5%', width: 180, height: 'auto', opacity: 0.5 }} />
-        <img src="/assets/clds.png" alt="" style={{ position: 'absolute', top: '8%', left: '30%', width: 200, height: 'auto', opacity: 0.45 }} />
-        <img src="/assets/clds.png" alt="" style={{ position: 'absolute', top: '5%', left: '65%', width: 160, height: 'auto', opacity: 0.5 }} />
-        <img src="/assets/clds.png" alt="" style={{ position: 'absolute', top: '14%', left: '10%', width: 140, height: 'auto', opacity: 0.4 }} />
-        <img src="/assets/clds.png" alt="" style={{ position: 'absolute', top: '12%', left: '80%', width: 150, height: 'auto', opacity: 0.4 }} />
-        <img src="/assets/clds.png" alt="" style={{ position: 'absolute', top: '20%', left: '45%', width: 170, height: 'auto', opacity: 0.35 }} />
+        <img src="/assets/clds.webp" alt="" style={{ position: 'absolute', top: '2%', left: '-5%', width: 180, height: 'auto', opacity: 0.5 }} />
+        <img src="/assets/clds.webp" alt="" style={{ position: 'absolute', top: '8%', left: '30%', width: 200, height: 'auto', opacity: 0.45 }} />
+        <img src="/assets/clds.webp" alt="" style={{ position: 'absolute', top: '5%', left: '65%', width: 160, height: 'auto', opacity: 0.5 }} />
+        <img src="/assets/clds.webp" alt="" style={{ position: 'absolute', top: '14%', left: '10%', width: 140, height: 'auto', opacity: 0.4 }} />
+        <img src="/assets/clds.webp" alt="" style={{ position: 'absolute', top: '12%', left: '80%', width: 150, height: 'auto', opacity: 0.4 }} />
+        <img src="/assets/clds.webp" alt="" style={{ position: 'absolute', top: '20%', left: '45%', width: 170, height: 'auto', opacity: 0.35 }} />
       </motion.div>
 
       {/* Decorative rings — hidden on mobile */}

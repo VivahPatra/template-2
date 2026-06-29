@@ -83,7 +83,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         >
           <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
             <div className="ganesha-backdrop" style={{ position: 'absolute', inset: -8, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,180,50,0.7) 0%, rgba(245,158,11,0.3) 50%, transparent 75%)', filter: 'blur(10px)' }} />
-            <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 48, height: 'auto', position: 'relative', zIndex: 1 }} />
+            <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 48, height: 'auto', position: 'relative', zIndex: 1 }} />
           </div>
         </div>
       </motion.div>

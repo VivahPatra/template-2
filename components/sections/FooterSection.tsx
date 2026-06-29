@@ -19,7 +19,7 @@ export default function FooterSection() {
 
       {/* Elephant walking */}
       <div className="absolute bottom-4 right-4 pointer-events-none z-10" aria-hidden>
-        <img src="/assets/doli.png" alt="" className="w-[140px] sm:w-[240px] md:w-[300px]" style={{ height: 'auto', opacity: 0.6, filter: 'brightness(1.1)' }} />
+        <img src="/assets/doli.webp" alt="" className="w-[140px] sm:w-[240px] md:w-[300px]" style={{ height: 'auto', opacity: 0.6, filter: 'brightness(1.1)' }} />
       </div>
 
       <div className="relative z-10 max-w-xl mx-auto px-6">
@@ -37,7 +37,7 @@ export default function FooterSection() {
           >
             <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
               <div className="ganesha-backdrop" style={{ position: 'absolute', inset: -16, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,180,50,0.7) 0%, rgba(245,158,11,0.3) 50%, transparent 75%)', filter: 'blur(14px)' }} />
-              <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 112, height: 'auto', position: 'relative', zIndex: 1 }} />
+              <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 112, height: 'auto', position: 'relative', zIndex: 1 }} />
             </div>
           </motion.div>
 

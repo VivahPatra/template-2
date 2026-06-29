@@ -23,14 +23,14 @@ export default function EleWalk() {
       {/* Left to right */}
       <div style={{ animation: 'eleWalkLR 20s linear infinite' }}>
         <div style={{ animation: 'eleStepAnim 0.8s ease-in-out infinite' }}>
-          <img src="/assets/ele.png" alt="" style={{ width: 100, height: 'auto', opacity: 0.7, filter: 'brightness(1.1) drop-shadow(0 4px 6px rgba(0,0,0,0.3))' }} />
+          <img src="/assets/ele.webp" alt="" style={{ width: 100, height: 'auto', opacity: 0.7, filter: 'brightness(1.1) drop-shadow(0 4px 6px rgba(0,0,0,0.3))' }} />
         </div>
         <div style={{ width: 80, height: 8, borderRadius: '50%', background: 'rgba(0,0,0,0.15)', margin: '-4px auto 0', filter: 'blur(3px)', animation: 'eleShadowAnim 0.8s ease-in-out infinite' }} />
       </div>
       {/* Right to left */}
       <div style={{ animation: 'eleWalkLR 24s linear infinite reverse', animationDelay: '10s' }}>
         <div style={{ animation: 'eleStepAnim 0.8s ease-in-out infinite' }}>
-          <img src="/assets/ele.png" alt="" style={{ width: 85, height: 'auto', opacity: 0.5, filter: 'brightness(1.1) drop-shadow(0 4px 6px rgba(0,0,0,0.3))', transform: 'scaleX(-1)' }} />
+          <img src="/assets/ele.webp" alt="" style={{ width: 85, height: 'auto', opacity: 0.5, filter: 'brightness(1.1) drop-shadow(0 4px 6px rgba(0,0,0,0.3))', transform: 'scaleX(-1)' }} />
         </div>
       </div>
     </div>
