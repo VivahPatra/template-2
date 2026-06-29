@@ -11,12 +11,12 @@ export function useWeddingData() {
 }
 
 export function WeddingDataProvider({ children }: { children: React.ReactNode }) {
-  const isIframe = typeof window !== 'undefined' && window.parent !== window
   const [data, setData] = useState<WeddingConfig>(defaultData)
-  const [ready, setReady] = useState(!isIframe)
+  const [ready, setReady] = useState(true)
 
   useEffect(() => {
     const inIframe = window.parent !== window
+    if (inIframe) setReady(false)
 
     function handleMessage(event: MessageEvent) {
       if (event.data?.type !== 'VIVAHPATRA_UPDATE') return
@@ -77,7 +77,7 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
       }
       return merged
       })
-      if (!ready) setReady(true)
+      setReady(true)
     }
 
     window.addEventListener('message', handleMessage)
