@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { weddingData as defaultData } from '@/data/wedding-data'
-import type { WeddingConfig } from '@/types/wedding.types'
+import type { WeddingConfig, WeddingEvent } from '@/types/wedding.types'
 
 const WeddingDataContext = createContext<WeddingConfig>(defaultData)
 
@@ -41,7 +41,9 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
         rsvpHeading: d.rsvpHeading ?? prev.rsvpHeading,
         rsvpText: d.rsvpText ?? prev.rsvpText,
         rsvpDeadline: d.rsvpDeadline ?? prev.rsvpDeadline,
-        events: Array.isArray(d.events) ? d.events : prev.events,
+        events: Array.isArray(d.events)
+          ? d.events.map((e: WeddingEvent) => ({ ...e, hidden: e.hidden }))
+          : prev.events,
         galleryImages: Array.isArray(d.galleryImages) ? d.galleryImages : prev.galleryImages,
         coupleStory: Array.isArray(d.coupleStory) ? d.coupleStory : prev.coupleStory,
         familyBride: Array.isArray(d.familyBride) ? d.familyBride : prev.familyBride,

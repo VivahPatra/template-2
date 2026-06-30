@@ -8,6 +8,7 @@ export interface WeddingEvent {
   venueAddress: string
   image: string
   color: string
+  hidden?: boolean
 }
 
 export interface GalleryImage {
