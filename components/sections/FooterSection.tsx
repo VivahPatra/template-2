@@ -45,7 +45,7 @@ export default function FooterSection() {
           <motion.h2
             variants={fadeUp}
             className="font-display shimmer-text mb-4"
-            style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', lineHeight: 1.1 }}
+            style={{ fontSize: 'clamp(2.1rem, 6.5vw, 4rem)', lineHeight: 1.3, padding: '0.1em 0' }}
           >
             {weddingData.groomName}
             <span className="mx-3 float-slow" style={{ color: 'var(--color-accent2)', fontSize: '0.65em' }}>&amp;</span>
