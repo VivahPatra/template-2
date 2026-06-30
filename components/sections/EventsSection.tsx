@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
 import { useWeddingData } from '@/context/WeddingDataContext'
@@ -16,6 +17,7 @@ function EventNode({
   isHero?: boolean
   delay?: number
 }) {
+  const [imgError, setImgError] = useState(false)
   const color = event.color || 'var(--color-accent)'
   const circleSize = isHero ? 130 : 100
   const mapUrl = `https://maps.google.com/?q=${encodeURIComponent(event.venue + ', ' + event.venueAddress)}`
@@ -54,13 +56,14 @@ function EventNode({
         />
 
         {/* Image or emoji */}
-        {event.image ? (
+        {event.image && !imgError ? (
           <img
             src={event.image}
             alt={event.name}
             className="absolute inset-0 object-contain"
             style={{ width: '100%', height: '100%', filter: 'brightness(0.82) saturate(1.05)' }}
             loading="lazy"
+            onError={() => setImgError(true)}
           />
         ) : (
           <div
