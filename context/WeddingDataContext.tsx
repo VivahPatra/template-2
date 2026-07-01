@@ -10,15 +10,26 @@ export function useWeddingData() {
   return useContext(WeddingDataContext)
 }
 
+const PreviewContext = React.createContext(false)
+
+export function useIsPreview(): boolean {
+  return React.useContext(PreviewContext)
+}
+
 export function WeddingDataProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<WeddingConfig>(defaultData)
   const [ready, setReady] = useState(true)
+  const [isPreview, setIsPreview] = useState(false)
 
   useEffect(() => {
     const inIframe = window.parent !== window
     if (inIframe) setReady(false)
 
     function handleMessage(event: MessageEvent) {
+      if (event.data?.type === 'VIVAHPATRA_PREVIEW_MODE') {
+        setIsPreview(true)
+        return
+      }
       if (event.data?.type !== 'VIVAHPATRA_UPDATE') return
       const d = event.data.data ?? event.data.payload ?? {}
 
@@ -96,7 +107,9 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
 
   return (
     <WeddingDataContext.Provider value={data}>
-      {children}
+      <PreviewContext.Provider value={isPreview}>
+        {children}
+      </PreviewContext.Provider>
     </WeddingDataContext.Provider>
   )
 }
