@@ -12,6 +12,7 @@ export const weddingData: WeddingConfig = {
     'Together with their families, Priya and Aryan joyfully invite you to celebrate the beginning of their forever. Your presence will make our day complete.',
   heroImage: '/assets/hero.jpg',
 
+  backgroundMusic: 'https://vivahpatra.co/music/ek-ladki-ko-dekha.mp3',
   events: [
     {
       id: 'engagement',

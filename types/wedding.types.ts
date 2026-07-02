@@ -52,6 +52,7 @@ export interface WeddingConfig {
   rsvpDeadline?: string
   events: WeddingEvent[]
   galleryImages: GalleryImage[]
+  backgroundMusic?: string
   familyBride: FamilyMember[]
   familyGroom: FamilyMember[]
   coupleStory: StoryMilestone[]
