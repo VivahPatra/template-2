@@ -47,6 +47,7 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
         invitationSubtitle: d.invitationSubtitle ?? prev.invitationSubtitle,
         invitationBlessing: d.invitationBlessing ?? prev.invitationBlessing,
         heroImage: d.heroImage ?? prev.heroImage,
+        backgroundMusic: (d.backgroundMusic && d.backgroundMusic.trim() !== '') ? d.backgroundMusic : prev.backgroundMusic,
         heroVideo: d.heroVideo ?? prev.heroVideo,
         heroSubtitle: d.heroSubtitle ?? prev.heroSubtitle,
         rsvpHeading: d.rsvpHeading ?? prev.rsvpHeading,
