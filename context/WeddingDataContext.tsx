@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { weddingData as defaultData } from '@/data/wedding-data'
@@ -25,7 +25,22 @@ export function WeddingDataProvider({ children }: { children: React.ReactNode })
     const inIframe = window.parent !== window
     if (inIframe) setReady(false)
 
+
+    function isTrustedOrigin(origin: string): boolean {
+      const trusted = [
+        window.location.origin,
+        'https://vivahpatra.co',
+        'https://www.vivahpatra.co',
+      ]
+      if (process.env.NODE_ENV === 'development') {
+        trusted.push('http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002')
+      }
+      return trusted.some(t => origin === t || origin.endsWith('.vivahpatra.co')) ||
+        /^https:\/\/vivahpatra[a-z0-9-]*\.vercel\.app$/.test(origin)
+    }
+
     function handleMessage(event: MessageEvent) {
+      if (!isTrustedOrigin(event.origin)) return
       if (event.data?.type === 'VIVAHPATRA_PREVIEW_MODE') {
         setIsPreview(true)
         return

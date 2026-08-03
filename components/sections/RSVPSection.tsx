@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import ParallaxSection from '@/components/ui/ParallaxSection'
@@ -23,7 +23,8 @@ export default function RSVPSection() {
   }, [])
 
   const handleSend = (guestCount: number, fullMessage: string) => {
-    const whatsappSend = `https://wa.me/${weddingData.rsvp.whatsappNumber}?text=${encodeURIComponent(fullMessage)}`
+    const safeNumber = (weddingData.rsvp.whatsappNumber ?? '').replace(/[^\d+]/g, '').replace(/(?!^\+)\+/g, '')
+    const whatsappSend = `https://wa.me/${safeNumber}?text=${encodeURIComponent(fullMessage)}`
     window.open(whatsappSend, '_blank')
     setModalOpen(false)
     setResponded(true)
